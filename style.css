@@ -1,0 +1,127 @@
+/* 전체 설정 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: verdana, sans-serif;
+    color: #1a6dfb;
+    margin: 0; /* 기본 여백 제거 권장 */
+}
+
+/* 핵심 변경 사항: Flexbox 사용
+   float 대신 부모 요소에 display: flex를 주면
+   자식 요소들이 자동으로 가로로 배치됩니다.
+*/
+.container {
+    display: flex;
+    flex-wrap: wrap; /* 화면이 좁아지면 줄바꿈 허용 */
+    width: 100%;
+}
+.main-header{
+    height: 70px;
+    text-align: center;
+}
+#main_menu{
+    text-align: center;
+    margin-top: 20px;
+    font-family: '맑은고딕';
+    font-size: 20px;
+    color: black;
+}
+#main_menu li{
+    display: inline;
+    margin-left: 80px;
+}
+/* 1. 네비게이션 (기존 .menu) */
+.sidebar-nav {
+    flex: 1;       /* 비율 1 */
+    min-width: 200px; /* 너무 좁아지지 않도록 최소 너비 설정 */
+    text-align: center;
+    background-color: #f2f2f2; /* 영역 구분을 위해 임시 배경색 추가 */
+}
+
+/* 네비게이션 링크 스타일 */
+.sidebar-nav a {
+    background-color: #1a6dfb;
+    padding: 10px;      /* 클릭 영역 확보를 위해 padding 약간 증가 */
+    margin-top: 7px;
+    display: block;
+    width: 100%;
+    color: #ffffff;     /* 가독성을 위해 흰색으로 변경 (기존 gray는 파란 배경에 안 보임) */
+    text-decoration: none;
+    transition: 0.3s;   /* 부드러운 효과 추가 */
+}
+
+/* 2. 메인 콘텐츠 (기존 .main) */
+.content {
+    text-align: center;
+    flex: 2;       /* 비율 3 (가장 넓게 차지) */
+    padding: 0 20px;
+}
+.content p{
+    color: #000000;
+}
+
+/* 3. 오른쪽 사이드바 (기존 .right) */
+.sidebar-right {
+    flex: 1;       /* 비율 1 */
+    background-color: #ffffff;
+    padding: 15px;
+    text-align: center;
+}
+
+/* 사이드바 내부 위젯 (기존 #div1, #div2) */
+.widget {
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* 구분선 추가 */
+    padding: 15px;
+    margin-top: 7px;
+    border-radius: 5px; /* 모던한 느낌을 위해 둥근 모서리 */
+}
+
+/* --- 링크 스타일 (Global) --- */
+a:link {
+    color: blue;
+    text-decoration: none;
+}
+a:visited {
+    color: #000000; /* 흰색 배경에서 안 보일 수 있어 일반적인 purple로 변경 */
+}
+a:hover {
+    color: #1a6dfb;
+    font-weight: bold;
+    text-decoration: underline;
+}
+a:active {
+    color: aqua;
+}
+
+/* .sidebar-nav 안의 a는 hover시 색상을 다르게 덮어씌움 */
+.sidebar-nav a:hover {
+    background-color: #0d47a1; /* 더 진한 파란색 배경 */
+    color: #ffffff;
+}
+footer{
+            width: 100%;
+            height: 100px;
+            margin-top: 30px;
+            background-color: #0d47a1;
+        }
+footer p{
+    text-align: center;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 620px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar-nav, 
+    .content, 
+    .sidebar-right {
+        width: 100%;
+        flex: auto;
+    }
+}
